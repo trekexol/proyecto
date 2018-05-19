@@ -1,8 +1,10 @@
-package cdbm.ucab.ingsw.controller;
+package proyecto.ingsw.controller;
 
-import cdbm.ucab.ingsw.command.UserChangingAttributesCommand;
-import cdbm.ucab.ingsw.command.UserSignUpCommand;
-import cdbm.ucab.ingsw.service.UserService;
+import proyecto.ingsw.command.UserChangingAttributesCommand;
+import proyecto.ingsw.command.UserSearchCommand;
+import proyecto.ingsw.command.UserSignUpCommand;
+import proyecto.ingsw.model.User;
+import proyecto.ingsw.service.UserService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -10,7 +12,9 @@ import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
 
-import cdbm.ucab.ingsw.command.UserLoginCommand;
+import proyecto.ingsw.command.UserLoginCommand;
+
+import java.util.List;
 
 @Slf4j
 
@@ -38,6 +42,15 @@ public class UserController {
         return userService.update(command, id);
     }
 
+    @RequestMapping(value = "/search/{firstname}", consumes = "application/json", method = RequestMethod.GET)
+    public List<User> search(@PathVariable("firstname") String firstname) {
+        return userService.searchUserByName(firstname);
+    }
+
+    @RequestMapping(value = "/delete/{id}", consumes = "application/json", method = RequestMethod.DELETE)
+    public ResponseEntity delete (@Valid @RequestBody UserChangingAttributesCommand command, @PathVariable("id") String id) {
+        return userService.update(command, id);
+    }
 }
 
 

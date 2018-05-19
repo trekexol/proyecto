@@ -1,4 +1,4 @@
-package cdbm.ucab.ingsw.command;
+package proyecto.ingsw.command;
 
 import java.io.Serializable;
 import lombok.Data;

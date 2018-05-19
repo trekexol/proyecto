@@ -1,8 +1,9 @@
-package cdbm.ucab.ingsw.command;
+package proyecto.ingsw.command;
 
 import java.io.Serializable;
 import lombok.Data;
 import lombok.ToString;
+import org.springframework.format.annotation.DateTimeFormat;
 
 import javax.validation.constraints.*;
 
@@ -41,6 +42,9 @@ public class UserSignUpCommand implements Serializable {
 
     @NotNull(message = "Por favor, introduzca una fecha de nacimiento.")
     @NotEmpty(message = "Por favor, introduzca una fecha de nacimiento.")
+    @DateTimeFormat(pattern = "dd/mm/yyyy")
+
+
     private String dateOfBirth;
 
  public String getFirstName() {

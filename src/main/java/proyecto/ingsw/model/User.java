@@ -1,4 +1,4 @@
-package cdbm.ucab.ingsw.model;
+package proyecto.ingsw.model;
 
 import lombok.Data;
 import lombok.ToString;
